@@ -1,0 +1,47 @@
+------ Script Base de datos (MySql) -------
+Ejectutar en el orden que se presenta.
+
+//Creación de la tabla "Clases"
+
+CREATE TABLE Clases (idClase INT NOT NULL AUTO_INCREMENT,
+ Nombre VARCHAR(45) NOT NULL,
+ PRIMARY KEY (IdClase));
+
+//Creación de la Tabla "Docentes"
+
+ CREATE TABLE Docentes (idDocente INT NOT NULL AUTO_INCREMENT,
+ Nombre VARCHAR(45) NOT NULL,
+ Apellido VARCHAR(45),
+ Documento INT,
+ Edad INT,
+ PRIMARY KEY (IdDocente));
+
+//Creación de la Tabla "Cursos"
+
+ CREATE TABLE Cursos (idCurso INT NOT NULL AUTO_INCREMENT,
+ Nombre VARCHAR(45) NOT NULL,
+ Docente INT,
+ Clase INT,
+ Puntaje INT,
+ PRIMARY KEY (IdCurso),
+ FOREIGN KEY (Clase) REFERENCES Clases (idClase),
+ FOREIGN KEY (Docente) REFERENCES Docentes (idDocente));
+
+//Creación de la Tabla "Estudiantes"
+
+ CREATE TABLE Estudiantess (idEstudiante INT NOT NULL AUTO_INCREMENT,
+ Nombre VARCHAR(45) NOT NULL,
+ Apellido VARCHAR(45),
+ Documento INT,
+ Edad INT,
+ PRIMARY KEY (IdEstudiante));
+
+//Creación de la Tabla "Pogresos"
+
+CREATE TABLE Progresos (idProgreso INT NOT NULL AUTO_INCREMENT,
+ Nota FLOAT,
+ Fecha DATE,
+ Curso INT,
+ PRIMARY KEY (IdProgreso),
+ FOREIGN KEY (Curso) REFERENCES Cursos (idCurso));
+
